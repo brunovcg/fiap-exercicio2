@@ -3,7 +3,7 @@ import Content from "../../components/Content";
 import { useRef, useState } from "react";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import { useBD } from "../../provider/banco_de_dados";
+import { useBD } from "../../provider/bancoDeDados";
 import { useNavigate } from "react-router-dom";
 
 function Cadastro() {
@@ -11,10 +11,11 @@ function Cadastro() {
   const cepRef = useRef(null);
   const inscricaoRef = useRef(null);
   const proprietarioRef = useRef(null);
+  const tamanhoRef = useRef(null);
   const [proprietario, setProprietario] = useState("");
   const navigate = useNavigate();
 
-  const { bancoCidadao, createImovel, bancoImovel } = useBD();
+  const { createImovel, bancoImovel, doesProprietarioExists } = useBD();
 
   const handleCadastrar = () => {
     let newDados = {
@@ -23,16 +24,16 @@ function Cadastro() {
       cep: cepRef.current?.inputValue,
       inscricao: inscricaoRef.current?.inputValue,
       endereco: enderecoRef.current?.inputValue,
+      tamanho: tamanhoRef.current?.inputValue,
+      iptu: Number(tamanhoRef.current?.inputValue) * 10
     };
 
     createImovel(newDados);
 
-    navigate(`/${proprietario}`);
+    navigate(`/imoveis/${proprietario}`);
   };
 
-  const doesProprietarioExists = () => {
-    return bancoCidadao.find((item) => item.id === Number(proprietario))?.nome;
-  };
+  
 
   const conteudo = (
     <ContentStyled>
@@ -40,6 +41,7 @@ function Cadastro() {
         { label: "Inscrição", name: "inscricao", refs: inscricaoRef },
         { label: "Endereço", name: "endereco", refs: enderecoRef },
         { label: "CEP", name: "cep", refs: cepRef },
+        { label: "Tamanho m2", name: "tamanho", refs: tamanhoRef },
         {
           label: "Cod. Proprietário",
           name: "proprietario",
@@ -60,9 +62,9 @@ function Cadastro() {
       {proprietario && (
         <div
           style={{ width: "100%", textAlign: "center" }}
-          className={doesProprietarioExists() ? "porprietario" : "error"}
+          className={doesProprietarioExists(proprietario) ? "porprietario" : "error"}
         >
-          Proprietário: {doesProprietarioExists() || "Não cadastrado"}
+          Proprietário: {doesProprietarioExists(proprietario) || "Não cadastrado"}
         </div>
       )}
       <div className="button">
@@ -72,7 +74,7 @@ function Cadastro() {
           backgroundColor="var(--green)"
           color="var(--white)"
           onClick={handleCadastrar}
-          disabled={!doesProprietarioExists()}
+          disabled={!doesProprietarioExists(proprietario)}
         >
           Cadastrar
         </Button>
@@ -82,7 +84,7 @@ function Cadastro() {
 
   return (
     <Styled>
-      <Content title="Cadastrar Imóvel" conteudo={conteudo} />
+      <Content title="Cadastrar Imóvel" conteudo={conteudo} showBar/>
     </Styled>
   );
 }

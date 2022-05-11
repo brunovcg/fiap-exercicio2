@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 const Styled = styled.div`
   background: var(--white);
-  width: 80vw;
-  min-height: 80vh;
+  width: 80%;
+  min-height: 100%;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@ const Styled = styled.div`
   }
 
   h2 {
-    margin: 30px;
+    margin: 10px;
   }
 
   figure {

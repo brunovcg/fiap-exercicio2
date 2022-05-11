@@ -2,7 +2,7 @@ import React, { useId, useImperativeHandle, useState } from "react";
 import Styled from "./styles.js";
 
 const Input = React.forwardRef(
-  ({ label, value, placeholder, onChange = (evt) => {} }, ref) => {
+  ({ label, value, placeholder, type="text", onChange = (evt) => {} }, ref) => {
     const id = useId();
 
     const [inputValue, setInputValue] = useState(value);
@@ -15,8 +15,9 @@ const Input = React.forwardRef(
       <Styled key={id}>
         <label htmlFor={id}>{label}</label>
         <input
+        
           ref={ref}
-          type="text"
+          type={type}
           id={id}
           placeholder={placeholder}
           value={inputValue}

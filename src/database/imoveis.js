@@ -4,14 +4,9 @@ export const imoveis = [
     inscricao: "346723634723",
     endereco: "Rua da flor, 54",
     cep: "55.986-009",
-    proprietario: 2,
-  },
-  {
-    id: 2,
-    inscricao: "5423452345",
-    endereco: "Rua da flor, 90",
-    cep: "50.986-011",
-    proprietario: 2,
+    proprietario: 4,
+    tamanho: 200,
+    iptu: 2000
   },
   {
     id: 3,
@@ -19,6 +14,8 @@ export const imoveis = [
     endereco: "Rua da rio, 214",
     cep: "20.989-009",
     proprietario: 1,
+    tamanho: 400,
+    iptu: 4000
   },
   {
     id: 4,
@@ -26,6 +23,8 @@ export const imoveis = [
     endereco: "Rua da flor, 50",
     cep: "55.986-009",
     proprietario: 2,
+    tamanho: 100,
+    iptu: 1000
   },
   {
     id: 5,
@@ -33,12 +32,7 @@ export const imoveis = [
     endereco: "Rua da mata, 500",
     cep: "91.226-101",
     proprietario: 3,
-  },
-  {
-    id: 6,
-    inscricao: "8687384734",
-    endereco: "Rua de Alagoas, 54",
-    cep: "77.111-222",
-    proprietario: 1,
+    tamanho: 500,
+    iptu: 5000
   },
 ]

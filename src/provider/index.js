@@ -1,4 +1,4 @@
-import { BancoDados } from "./banco_de_dados";
+import { BancoDados } from "./bancoDeDados";
 import { ModalProvider } from "./modal";
 
 const Providers = ({ children }) => {

@@ -1,13 +1,14 @@
 const Button = ({
   children,
-  width = "30px",
-  height = "30px",
+  width,
+  height,
   isIcon,
   fontSize = "25px",
   backgroundColor,
   color,
   onClick,
   disabled = false,
+  padding = "5px"
 }) => {
   return (
     <button
@@ -15,6 +16,8 @@ const Button = ({
       disabled={disabled}
       style={{
         width: width,
+        display:"inline-block",
+        textAlign: "center",
         height: height,
         border: isIcon && "none",
         backgroundColor: disabled
@@ -24,6 +27,7 @@ const Button = ({
           : isIcon && "transparent",
         fontSize: fontSize,
         color: color,
+        padding: padding
       }}
     >
       {children}
