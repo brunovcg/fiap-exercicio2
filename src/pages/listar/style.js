@@ -1,0 +1,25 @@
+import styled from "styled-components";
+
+export const Styled = styled.div`
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+`;
+
+export const ContentStyled = styled.div`
+
+.imovel-info{
+  margin: 5px 0;
+}
+.negrito{
+  font-weight: bold;
+}
+`;
+
+
+
+
+
